@@ -53,3 +53,50 @@ div.innerins p {
     font-weight: bold;
     font-size: 17px;
 }
+
+.linkkk {
+    position:fixed;
+    top: 85%;
+    bottom: 10%;
+    right: 800px;
+    left: 700px;
+  }
+  
+.linkkk .hire {
+    color: #f8f8f8;
+    text-decoration: none;
+    background: #ec1313;
+    padding: 15px 25px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: 0.2s;
+    position: fixed;
+  }
+  
+  .linkkk .hire:hover {
+    background-color: azure;
+    border: 2px solid #020202;
+    color: rgb(234, 9, 9);
+  }
+  .downl{
+    color: #f8f8f8 !important;
+    text-decoration: none;
+    background: #ec1313;
+    padding: 15px 25px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: 0.2s;
+    margin-bottom: 50px;
+
+  
+  }
+  .inss{
+    margin-top: 50px;
+    margin-left: 40px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 25px;
+
+  }
+  .inss li{
+    margin-bottom: 10px;
+  }

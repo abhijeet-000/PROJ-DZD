@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import homepage from "./components/homepage"
+import Homepage from "./components/homepage"
 import Readmore from './components/readmore';
 import Scan1 from './components/scan1';
 import Instructions from './components/instructions';
@@ -35,10 +35,11 @@ function App() {
           <Router>
             <Switch>
               <Route path="/nv" component={() => <Navbar user={loginres} logout={handlelogout} />} />
-              {/* <Route exact path="/" component={homepage} /> */}
+              <Route exact path="/" component={()=> <Homepage user={loginres} logout={handlelogout}/>} />
               <Route path="/about" component={() => <Readmore user={loginres} logout={handlelogout} />} />
               <Route path="/scan" component={() => <Scan1 user={loginres} logout={handlelogout}/>} />
               <Route path="/instructions" component={() => <Instructions user={loginres} logout={handlelogout}/>} />
+              <Route path="*" component={()=><Signup handlelogin={handlelogin} />}/>
               {/* <Route path="/signup" component={() => <Signup handlelogin={handlelogin} />} /> */}
             </Switch>
           </Router>
@@ -53,11 +54,12 @@ function App() {
             <Switch>
               {/* {loginres && <Route path="/nv" component={() => <Navbar user={loginres} />} />} */}
               {/* <Route path="/nv" component={Navbar} /> */}
-              <Route exact path="/" component={homepage} />
+              <Route exact path="/" component={Homepage} />
               <Route path="/about" component={Readmore} />  
-              {/* <Route path="/scan" component={Scan1} />
-              <Route path="/instructions" component={Instructions} /> */}
+              {/* <Route path="/scan" component={Scan1} />*/}
+              <Route path="/instructions" component={Instructions} /> 
               <Route path="/signup" component={() => <Signup handlelogin={handlelogin} />} />
+              <Route path="*" component={()=><Signup handlelogin={handlelogin} />}/>
             </Switch>
           </Router>
         </div>
