@@ -3,113 +3,68 @@ import "./homepage.css"
 import Navbar from "./navbar"
 // import { Link } from 'react-router-dom';
 
-const homepage = () => {
+const Homepage = ({user,logout}) => {
+  console.log("user"+user)
   return (
-    <div>
-      <Navbar />
-      <section style={styles.whiteSection} class="main">
-        <div class="title">
-          <p>DETECTIVE ZERO-DAY</p>
-        </div>
-        {/* <div class="img">
-          <img src="https://img.freepik.com/free-photo/fading-blue-background_53876-88684.jpg?w=740&t=st=1686293300~exp=1686293900~hmac=532bc32306c49f2a05dcab37e96df94905086ebd8a2ea079c5120aacb030d084" style={styles.image} />
-        </div> */}
-        <div class="content">
-          <p>Don't compromise your network's security. Get started with our powerful network log analysis tool today and experience the peace of mind that comes with knowing your systems are safe from cyber threats.</p>
-          <a href="/signup">
-            <button class="signup">Sign up</button>
-          </a>
+    <><div className='container1'>
+      <Navbar user={user} logout={logout} />
+          
+      <div className="content">
+        <h2><br />ZeroDay attack detection</h2>
+        <p >Empowering defenders against the unknown,<br />Unveiling the secrets of zero-day vulnerabilities.</p>
+      </div>
+
+    </div><div class="containerr my-5 py-2">
+        <h2 class="text-center font-weight-bold my-5"></h2>
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <img src="https://i.ibb.co/m9KnRXR/smart-protect-3.jpg" alt="Smart Scan" class="mx-auto" />
+            <h3 style={{ fontWeight: 'bold' }}>Smart Scan</h3>
+            <p className="card123">Scanning of the network logs are done by our integrated cic flowmeter tool</p>
+          </div>
+
+          <div class="col-md-4 text-center">
+            <img src="https://i.ibb.co/dBZb5ZK/smart-protect-2.jpg" alt="Phishing Detect" class="mx-auto" />
+            <h3 style={{ fontWeight: 'bold' }}>Detection</h3>
+            <p className="card123">The logs collected are loaded into our machine learning models to get the result</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <img src="https://i.ibb.co/SNyc7XX/smart-protect-1.jpg" alt="Anti-spam" class="mx-auto" />
+            {/* <h3 style={{fontWeight:'bold'}}>Email</h3>
+               */}
+            <h3 style={{ fontWeight: 'bold' }}>Email</h3>
+
+            <p className="card123">An email is sent to the user regarding the details of the scan</p>
+          </div>
 
         </div>
-        <br></br>
-        <br></br>
-        <div class="cards">
-          <div class="xyz">
-            <img src="https://www.seekpng.com/png/full/10-104124_line-transparent-shadow-white-vertical-line-transparent.png" style={styles.xyz} />
-          </div>
-          <div>
-            <p class="biggertext">98%</p>
-            <p class="smallertext">accuracy rate</p>
-          </div>
-          <div class="xyz">
-            <img src="https://www.seekpng.com/png/full/10-104124_line-transparent-shadow-white-vertical-line-transparent.png" style={styles.xyz} />
-          </div>
-          <div>
-            <p class="biggertext">ML</p>
-            <p class="smallertext">Random forest as the core model</p>
-          </div>
-          <div class="xyz">
-            <img src="https://www.seekpng.com/png/full/10-104124_line-transparent-shadow-white-vertical-line-transparent.png" style={styles.xyz} />
-          </div>
-          <div>
-            <p class="biggertext">20s</p>
-            <p class="smallertext">avg. response time</p>
-          </div>
-          <div class="xyz">
-            <img src="https://www.seekpng.com/png/full/10-104124_line-transparent-shadow-white-vertical-line-transparent.png" style={styles.xyz} />
-          </div>
+        
+      </div>
+      <br />
+      
+      <div>
+      <div class="jumbotron jumbotron-fluid feature" id="feature-first">
+    <div class="container my-5">
+      <div class="row justify-content-between text-center text-md-left">
+        <div class="col-md-6">
+          <h1 className="imgtxt1">Take a look inside</h1>
+          <br />
+          <p className="imgtxt2">A website build to detect the undiscovered vulnerabilities through machine learning models</p>
+          <a href="/about" class="learnn">Learn More</a>
         </div>
-
-      </section>
-      <section class="section2">
-        <div class="img2">
-          <img src="https://img.freepik.com/free-photo/fading-blue-background_53876-88684.jpg?w=740&t=st=1686293300~exp=1686293900~hmac=532bc32306c49f2a05dcab37e96df94905086ebd8a2ea079c5120aacb030d084" style={styles.secimg}></img>
-        </div>
-        <div class="content2">
-          <p style={{ fontWeight: "bold" }}>ZERO-DAY ATTACK</p>
-          <p>Zero-day attacks exploit unknown vulnerabilities, making them highly elusive and dangerous.
-            Our advanced system detects and predicts zero-day attacks, providing proactive defense.
-            Stay one step ahead of cyber threats with our robust zero-day attack detection.</p>
-          <a href="/about" className="aboutus">
-            Read More
-          </a>
-          {/* <button  Link to="/about" class="aboutus">Read More</button> */}
+        <div class="col-md-6 align-self-center">
+          <img src="https://i.ibb.co/Tk7jY5S/feature-1.png" alt="Take a look inside" className="mx-auto d-block" />
 
         </div>
-      </section >
-      <section style={styles.Section3}>
-        <div class="today">
-          <p>Sign up today.</p>
-        </div>
-        <div class="startb">
-          <a href="/signup">
-            <button class="start">Get Started</button>
-          </a>
-
-        </div>
-      </section>
-      <footer className="footer">
-        <div className="contact-details">
-          <span>Github</span>
-        </div>
-      </footer>
-
+      </div>
     </div>
+  </div>
+      </div>
+
+
+    </>
   )
 }
 
-export default homepage
+export default Homepage
 
-const styles = {
-  whiteSection: {
-    backgroundColor: 'white',
-    height: '400px',
-  },
-  image: {
-    width: '60%',
-    height: '50%',
-    borderRadius: '0.5em',
-  },
-  xyz: {
-    width: "30%"
-  },
-  secimg: {
-    width: '90%',
-    height: '50%',
-    borderRadius: '0.5em',
-  },
-  Section3: {
-    backgroundColor: 'white',
-    height: '210px',
-  },
-};

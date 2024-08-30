@@ -18,9 +18,10 @@ import Zeroday from './attackinfos/Zeroday';
 const Scan1 = ({user, logout}) => {
     const [file, setFile] = useState(null);
     const [res, setres] = useState("");
-
+    const [isLoading, setIsLoading] = useState(false);
     const handleChange = (event) => {
         setFile(event.target.files[0]);
+
     };
 
     const handleSubmit = async (event) => {
@@ -30,7 +31,8 @@ const Scan1 = ({user, logout}) => {
         formData.append('username', user.username)
 
         try {
-            const response = await axios.post('https://dzd-backend.onrender.com/upload', formData, {
+            setIsLoading(true);
+            const response = await axios.post('http://127.0.0.1:8000/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 mode: 'no-cors'
             });
@@ -38,6 +40,9 @@ const Scan1 = ({user, logout}) => {
             console.log(res);
         } catch (error) {
             console.error(error);
+        }
+        finally{
+            setIsLoading(false);
         }
     };
     return (
@@ -64,12 +69,15 @@ const Scan1 = ({user, logout}) => {
                             or
                             <input type="file" accept=".csv" required id="file-input" onChange={handleChange} />
                         </label>
+                        {isLoading && <div className="loading-icon">Loading...</div>}
                     </form>
+                    
                 </div>
-                <div>
+                
                     <button class="uploadbtn" onClick={handleSubmit}>Upload</button>
-                </div>
+                
             </div>
+            
             <div class='result'>
                 {res && (
                     <div class='resinfo'>
@@ -109,11 +117,7 @@ const Scan1 = ({user, logout}) => {
 
             </div>
 
-            <footer className="footer">
-                <div className="contact-details">
-                    <a href="#" style={{ color: 'white' }}>Github</a>
-                </div>
-            </footer>
+            
         </div>
     )
 }

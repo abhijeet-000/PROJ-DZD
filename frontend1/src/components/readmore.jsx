@@ -4,6 +4,7 @@ import "./readmore.css"
 
 const Readmore = ({user, logout}) => {
   return (
+    <div className='abhi'>
     <div>
       <Navbar user={user} logout={logout}/>
       <div class="abouttitle">
@@ -21,11 +22,9 @@ const Readmore = ({user, logout}) => {
       <p class='details'>KMIT.</p>
 
 
-      <footer className="footer">
-        <div className="contact-details">
-          <a href="#" style={{ color: 'white' }}>Github</a>
-        </div>
-      </footer>
+      
+    </div>
+
     </div>
   )
 }

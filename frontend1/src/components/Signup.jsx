@@ -10,10 +10,20 @@ function Signup({ handlelogin }) {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
+  const isEmailValid = (email) => {
+    return email.trim() !== '' && email.trim().endsWith('@gmail.com');
+  };
+
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
+
+    if (!isEmailValid(signupEmail)) {
+      alert('Please enter a valid email ending with @gmail.com');
+      return;
+    }
+
     try {
-      const response = await fetch('https://dzd-backend.onrender.com/register', {
+      const response = await fetch('http://127.0.0.1:8000/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,12 +35,12 @@ function Signup({ handlelogin }) {
       });
       const Data = await response.json();
       if (Data.message === true) {
-        console.log("Registered");
-        alert("User registered. Please login now");
+        console.log('Registered');
+        alert('User registered. Please login now');
         window.location.reload();
       } else {
-        console.error("Signup failed", Data.message);
-        window.alert("User already exists. Please login now");
+        console.error('Signup failed', Data.message);
+        window.alert('User already exists. Please login now');
       }
     } catch (error) {
       console.error('Error during signup:', error);
@@ -40,8 +50,13 @@ function Signup({ handlelogin }) {
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
 
+    if (!isEmailValid(loginEmail)) {
+      alert('Please enter a valid email ending with @gmail.com');
+      return;
+    }
+
     try {
-      const response = await fetch('https://dzd-backend.onrender.com/login', {
+      const response = await fetch('http://127.0.0.1:8000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,9 +71,9 @@ function Signup({ handlelogin }) {
         // console.log(data);
         handlelogin(data);
         // alert("Login Successful.")
-        window.location.href = '/scan';
+        window.location.href = '/';
       } else {
-        alert("Invalid credentials")
+        alert('Invalid credentials');
         console.error('Login failed:', data.message);
       }
     } catch (error) {
@@ -67,11 +82,11 @@ function Signup({ handlelogin }) {
   };
 
   return (
-    <div>
+    <div className="Body">
       <Navbar />
-      <div className='handleboth'>
-        <div className='register'>
-          <form className='registerform' onSubmit={handleSignupSubmit}>
+      <div className="handleboth">
+        <div className="register">
+          <form className="registerform" onSubmit={handleSignupSubmit}>
             <p className="registertitle">Sign up for an account</p>
             <div className="input-container">
               <input
@@ -90,18 +105,14 @@ function Signup({ handlelogin }) {
               />
             </div>
             <p></p>
-            <button type="submit" className="submit">Sign up</button>
+            <button type="submit" className="submit">
+              Sign up
+            </button>
           </form>
         </div>
-        <div className="xyz">
-          <img
-            src="https://www.seekpng.com/png/full/10-104124_line-transparent-shadow-white-vertical-line-transparent.png"
-            style={styles.xyz}
-            alt="Vertical Line"
-          />
-        </div>
-        <div className='login'>
-          <form className='loginform' onSubmit={handleLoginSubmit}>
+
+        <div className="login">
+          <form className="loginform" onSubmit={handleLoginSubmit}>
             <p className="logintitle">Log in to your account</p>
             <div className="input-container">
               <input
@@ -120,23 +131,14 @@ function Signup({ handlelogin }) {
               />
             </div>
             <p></p>
-            <button type="submit" className="submit">Log in</button>
+            <button type="submit" className="submit">
+              Log in
+            </button>
           </form>
         </div>
       </div>
-      <footer className="footer">
-        <div className="contact-details">
-          <span>Github</span>
-        </div>
-      </footer>
     </div>
   );
-};
+}
 
 export default Signup;
-
-const styles = {
-  xyz: {
-    width: "70%"
-  },
-};
